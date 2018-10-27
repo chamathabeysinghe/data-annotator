@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Grid, Image} from 'semantic-ui-react'
+import {Grid, Image, List} from 'semantic-ui-react'
+import {Player} from 'video-react'
 
 class Annotator extends Component {
   render() {
@@ -7,11 +8,35 @@ class Annotator extends Component {
       <div>
         <Grid>
           <Grid.Row columns={2}>
-            <Grid.Column width={10}>
-              <Image src='/images/narnia.jpg' />
+            <Grid.Column>
+              <Player
+                playsInline
+                poster="/images/narnia.jpg"
+                src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+              />
             </Grid.Column>
-            <Grid.Column width={6}>
-              <Image src='/images/narnia.jpg' />
+            <Grid.Column>
+              <List selection verticalAlign='middle'>
+                <List.Item>
+
+                  <List.Content>
+                    <List.Header>Helen</List.Header>
+                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                  <Image avatar src='https://react.semantic-ui.com/images/avatar/small/christian.jpg' />
+                  <List.Content>
+                    <List.Header>Christian</List.Header>
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                  <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
+                  <List.Content>
+                    <List.Header>Daniel</List.Header>
+                  </List.Content>
+                </List.Item>
+              </List>
             </Grid.Column>
           </Grid.Row>
 
