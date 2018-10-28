@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form,Radio, Checkbox,Grid} from 'semantic-ui-react'
+import {Form,Radio, Button,Grid} from 'semantic-ui-react'
 
 class AnnotatorForm extends Component {
   constructor (props) {
@@ -21,12 +21,36 @@ class AnnotatorForm extends Component {
     var updatedState = Object.assign({}, updatedState)
     this.setState(updatedState)
   }
+  onCategoryClick (value) {
+    var categories = this.state.categories
+    if (categories.indexOf(value)!==-1) {
+      var newCategories = []
+      for (var i = 0; i < categories.length; i++) {
+        if (!categories[i].startsWith(value)) {
+          newCategories.push(categories[i])
+        }
+      }
+      categories = newCategories
+    } else {
+      if (value.indexOf('-')>-1) {
+        var mainTopic = value.split('-')[0]
+        if (categories.indexOf(mainTopic) === -1) {
+          categories.push(mainTopic)
+        }
+      }
+      categories.push(value)
+    }
+    this.setState({
+      categories: categories
+    })
+  }
   render() {
     return (
       <Form>
         <Grid>
           <Grid.Row columns={2}>
             <Grid.Column width={5}>
+              <h1>Tags</h1>
               <Form.Field inline>
                 <label>Object frequency</label>
                 <Radio
@@ -207,9 +231,107 @@ class AnnotatorForm extends Component {
                 />
               </Form.Field>
 
-
             </Grid.Column>
-            <Grid.Column>
+
+            <Grid.Column width={11}>
+              <h1>Categories</h1>
+              <div style={{marginTop: '5px', marginBottom: '5px', padding: '5px'}}>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Plants')===-1} color='green' onClick={this.onCategoryClick.bind(this,'Plants')}>
+                  Plants
+                </Button>
+              </div>
+
+              <div style={{marginTop: '5px', marginBottom: '5px', padding: '5px'}}>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Pets')===-1} color='blue ' onClick={this.onCategoryClick.bind(this,'Pets')}>
+                  Pets/Animals
+                </Button>
+              </div>
+
+              <div style={{marginTop: '5px', marginBottom: '5px', padding: '5px'}}>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Food')===-1} color='olive' onClick={this.onCategoryClick.bind(this,'Food')}>
+                  Food
+                </Button>
+              </div>
+
+              <div style={{marginTop: '5px', marginBottom: '5px', padding: '5px'}}>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Sports')===-1} color='red' onClick={this.onCategoryClick.bind(this,'Sports')}>
+                  Sports
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Sports-Indoor')===-1} color='red' onClick={this.onCategoryClick.bind(this,'Sports-Indoor')}>
+                  Indoor
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Sports-Outdoor')===-1} color='red' onClick={this.onCategoryClick.bind(this,'Sports-Outdoor')}>
+                  Outdoor
+                </Button>
+              </div>
+
+              <div style={{marginTop: '5px', marginBottom: '5px', padding: '5px'}}>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('People')===-1} color='orange' onClick={this.onCategoryClick.bind(this,'People')}>
+                  People
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('People-Beauty')===-1} color='orange' onClick={this.onCategoryClick.bind(this,'People-Beauty')}>
+                  Beauty
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('People-Fitness')===-1} color='orange' onClick={this.onCategoryClick.bind(this,'People-Fitness')}>
+                  Fitness
+                </Button>
+              </div>
+
+
+
+              <div style={{marginTop: '5px', marginBottom: '5px', padding: '5px'}}>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Business')===-1} color='yellow' onClick={this.onCategoryClick.bind(this,'Business')}>
+                  Business
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Business-Building')===-1} color='yellow' onClick={this.onCategoryClick.bind(this,'Business-Building')}>
+                  Building
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Business-Factory')===-1} color='yellow' onClick={this.onCategoryClick.bind(this,'Business-Factory')}>
+                  Factory
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Business-Paddy')===-1} color='yellow' onClick={this.onCategoryClick.bind(this,'Business-Paddy')}>
+                  Paddy
+                </Button>
+              </div>
+
+              <div style={{marginTop: '5px', marginBottom: '5px', padding: '5px'}}>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Transportation')===-1} color='violet' onClick={this.onCategoryClick.bind(this,'Transportation')}>
+                  Transportation
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Transportation-Train')===-1} color='violet' onClick={this.onCategoryClick.bind(this,'Transportation-Train')}>
+                  Train
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Transportation-Car')===-1} color='violet' onClick={this.onCategoryClick.bind(this,'Transportation-Car')}>
+                  Car
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Transportation-Aeroplane')===-1} color='violet' onClick={this.onCategoryClick.bind(this,'Transportation-Aeroplane')}>
+                  Aeroplane
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Transportation-Ship')===-1} color='violet' onClick={this.onCategoryClick.bind(this,'Transportation-Ship')}>
+                  Ship
+                </Button>
+              </div>
+
+              <div style={{marginTop: '5px', marginBottom: '5px', padding: '5px'}}>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Landscape')===-1} color='purple' onClick={this.onCategoryClick.bind(this,'Landscape')}>
+                  Landscape
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Landscape-Sea')===-1} color='purple' onClick={this.onCategoryClick.bind(this,'Landscape-Sea')}>
+                  Sea
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Landscape-Beach')===-1} color='purple' onClick={this.onCategoryClick.bind(this,'Landscape-Beach')}>
+                  Beach
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Landscape-Sky')===-1} color='purple' onClick={this.onCategoryClick.bind(this,'Landscape-Sky')}>
+                  Sky
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Landscape-River')===-1} color='purple' onClick={this.onCategoryClick.bind(this,'Landscape-River')}>
+                  River
+                </Button>
+                <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Landscape-Home')===-1} color='purple' onClick={this.onCategoryClick.bind(this,'Landscape-Home')}>
+                  Home
+                </Button>
+              </div>
 
             </Grid.Column>
           </Grid.Row>

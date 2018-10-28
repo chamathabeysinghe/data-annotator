@@ -14,7 +14,7 @@ class Annotator extends Component {
   }
 
   getFiles () {
-    return ['camila.mp4', 'pimple.mp4']
+    return ['camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4',]
   }
 
   submitAnnotationForVideo () {
