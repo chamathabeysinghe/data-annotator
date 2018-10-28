@@ -8,6 +8,7 @@ class Annotator extends Component {
   constructor (props) {
     super (props)
     this.state = {
+      filesAlreadyAnnotated: [],
       filesToAnnotate: [],
       currentVideo: ''
     }
@@ -16,7 +17,9 @@ class Annotator extends Component {
   getFiles () {
     return ['camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4',]
   }
-
+  getFilesAlreadyAnnotated () {
+    return ['pimple.mp4']
+  }
   submitAnnotationForVideo () {
 
   }
@@ -34,7 +37,8 @@ class Annotator extends Component {
 
   componentWillMount () {
     this.setState({
-      filesToAnnotate: this.getFiles()
+      filesToAnnotate: this.getFiles(),
+      filesAlreadyAnnotated: this.getFilesAlreadyAnnotated()
     })
   }
 
@@ -50,12 +54,13 @@ class Annotator extends Component {
                 src={this.state.currentVideo}
               />
             </Grid.Column>
-            <Grid.Column width={2}>
+            <Grid.Column width={4}>
+              <div style={{maxHeight: '500px', overflowY:'scroll'}}>
               <List selection verticalAlign='middle'>
                 {this.state.filesToAnnotate.map(fileName => {
                   return (
                     <List.Item onClick={this.changeCurrentVideo.bind(this, fileName)}>
-                      <Image avatar src='https://react.semantic-ui.com/images/avatar/small/helen.jpg' />
+                      <Image avatar src={this.state.filesAlreadyAnnotated.indexOf(fileName)===-1?'images/question.png':'/images/right.png'} />
                       <List.Content>
                         <List.Header>{fileName}</List.Header>
                       </List.Content>
@@ -63,6 +68,7 @@ class Annotator extends Component {
                   )
                 })}
               </List>
+              </div>
             </Grid.Column>
           </Grid.Row>
 
