@@ -44,6 +44,10 @@ class AnnotatorForm extends Component {
       categories: categories
     })
   }
+
+  onSubmitClick () {
+    this.props.submitAnnotationForVideo(this.state)
+  }
   render() {
     return (
       <Form>
@@ -334,6 +338,11 @@ class AnnotatorForm extends Component {
               </div>
 
             </Grid.Column>
+          </Grid.Row>
+          <Grid.Row centered>
+            <div>
+              <Button style={{width:'500px'}} positive onClick={this.onSubmitClick.bind(this)}>Submit</Button>
+            </div>
           </Grid.Row>
 
         </Grid>

@@ -20,8 +20,8 @@ class Annotator extends Component {
   getFilesAlreadyAnnotated () {
     return ['pimple.mp4']
   }
-  submitAnnotationForVideo () {
-
+  submitAnnotationForVideo (annotations) {
+    console.log(annotations)
   }
 
   submitAllAnnotations () {
@@ -31,7 +31,7 @@ class Annotator extends Component {
   changeCurrentVideo (fileName) {
     console.log(fileName)
     this.setState({
-      currentVideo: `/videos/${fileName}`
+      currentVideo: fileName
     })
   }
 
@@ -51,7 +51,7 @@ class Annotator extends Component {
               <Player
                 playsInline
                 poster="/images/narnia.jpg"
-                src={this.state.currentVideo}
+                src={'/videos/'+this.state.currentVideo}
               />
             </Grid.Column>
             <Grid.Column width={4}>
@@ -74,7 +74,7 @@ class Annotator extends Component {
 
           <Grid.Row columns={1}>
             <Grid.Column>
-              <AnnotatorForm/>
+              <AnnotatorForm submitAnnotationForVideo={this.submitAnnotationForVideo.bind(this)}/>
             </Grid.Column>
 
           </Grid.Row>
