@@ -69,40 +69,16 @@ class Annotator extends Component {
     return (
       <div>
         <Grid>
-          <Grid.Row columns={3}>
+          <Grid.Row columns={2}>
             <Grid.Column width={8}>
               <Player
                 playsInline
                 src={'/videos/'+this.state.currentVideo}
               />
             </Grid.Column>
-            <Grid.Column width={4}>
-              <div style={{maxHeight: '500px', overflowY:'scroll'}}>
-              <List selection verticalAlign='middle'>
-                {this.state.filesToAnnotate.map(fileName => {
-                  return (
-                    <List.Item onClick={this.changeCurrentVideo.bind(this, fileName)} style={this.state.currentVideo === fileName?{background: 'rgb(232, 233, 232)'}:{}}>
-                      {/*<Image avatar src={this.state.filesAlreadyAnnotated.indexOf(fileName)===-1?'images/question.png':'/images/right.png'} />*/}
-                      <Icon name={this.state.filesAlreadyAnnotated.indexOf(fileName)===-1?'pencil alternate':'hand point right'} color={this.state.filesAlreadyAnnotated.indexOf(fileName)===-1?'red':'green'} size='big' />
-                      <List.Content>
-                        <List.Header>{fileName}</List.Header>
-                      </List.Content>
-                    </List.Item>
-                  )
-                })}
-              </List>
-              </div>
-            </Grid.Column>
-            <Grid.Column width={2} centered>
-              <Button style={{width:'100%'}} positive >Download CSV</Button>
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row columns={1}>
             <Grid.Column>
               <AnnotatorForm submitAnnotationForVideo={this.submitAnnotationForVideo.bind(this)}/>
             </Grid.Column>
-
           </Grid.Row>
         </Grid>
       </div>

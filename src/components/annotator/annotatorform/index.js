@@ -52,8 +52,8 @@ class AnnotatorForm extends Component {
     return (
       <Form>
         <Grid>
-          <Grid.Row columns={2}>
-            <Grid.Column width={5}>
+          <Grid.Row columns={1}>
+            <Grid.Column>
               <h1>Tags</h1>
               <Form.Field inline>
                 <label>Object frequency</label>
@@ -237,7 +237,7 @@ class AnnotatorForm extends Component {
 
             </Grid.Column>
 
-            <Grid.Column width={11}>
+            <Grid.Column>
               <h1>Categories</h1>
               <div style={{marginTop: '5px', marginBottom: '5px', padding: '5px'}}>
                 <Button style={{width: '200px'}} basic={this.state.categories.indexOf('Plants')===-1} color='green' onClick={this.onCategoryClick.bind(this,'Plants')}>
