@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Grid, Button, List, Icon} from 'semantic-ui-react'
 import {Player} from 'video-react'
+import axios from 'axios'
 import AnnotatorForm from './annotatorform'
 import files from '../../utils/files'
 
@@ -10,59 +11,38 @@ class Annotator extends Component {
   constructor (props) {
     super (props)
     this.state = {
-      filesAlreadyAnnotated: [],
-      filesToAnnotate: [],
-      currentVideo: ''
+      video: undefined
     }
   }
 
-  getFiles () {
-    return files
-  }
-  getFilesAlreadyAnnotated () {
-    var alreadyAnnotated = []
-    var currentList = localStorage.getItem('doneList')
-    if (!currentList) {
-      return alreadyAnnotated
-    }
-    currentList = JSON.parse(currentList)
-    for (var i = 0; i < currentList.length; i++) {
-      console.log(currentList[i])
-      alreadyAnnotated.push(currentList[i].video)
-    }
-    return alreadyAnnotated
-  }
-  submitAnnotationForVideo (annotations) {
-    var currentList = localStorage.getItem('doneList')
-    annotations.video = this.state.currentVideo
-
-    if (currentList) {
-      currentList = JSON.parse(currentList)
-      currentList.push(annotations)
-    } else {
-      currentList = [annotations]
-    }
-    console.log(currentList)
-    localStorage.setItem('doneList', JSON.stringify(currentList))
-
-
-  }
-
-  submitAllAnnotations () {
-
-  }
-
-  changeCurrentVideo (fileName) {
-    this.setState({
-      currentVideo: fileName
-    })
+  submitAnnotationForVideo (annotation) {
+    const video = this.state.video
+    annotation['video_url'] = video.video_url
+    annotation['video_id'] = video._id
+    var form = {video, annotation}
+    console.log(annotation)
+    axios.post('http://localhost:1234/api/annotation', form)
+      .then(function(response){
+        console.log(response)
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
   }
 
   componentWillMount () {
-    this.setState({
-      filesToAnnotate: this.getFiles(),
-      filesAlreadyAnnotated: this.getFilesAlreadyAnnotated()
-    })
+    var self = this
+    axios.get('http://localhost:1234/api/video')
+      .then(function (response) {
+        console.log(response.data.result)
+        var video = response.data.result
+        self.setState({
+          video: video
+        })
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 
   render() {
@@ -73,7 +53,7 @@ class Annotator extends Component {
             <Grid.Column width={8}>
               <Player
                 playsInline
-                src={'/videos/'+this.state.currentVideo}
+                src={this.state.video ? this.state.video.video_url : undefined}
               />
             </Grid.Column>
             <Grid.Column>
