@@ -17,8 +17,9 @@ router.get('/video', function (req, res, next) {
 
 router.post('/annotation', function (req, res, next) {
   var video = req.body.video
-  var data = req.body.anotation
+  var data = req.body.annotation
   var annotation = new Annotation(data)
+  console.log(annotation)
   annotation.save(function (err) {
     if (err) {
       return next(err)

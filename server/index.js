@@ -1,10 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-
+const cors = require('cors')
 
 const app = express()
-
+app.use(cors())
 
 const db_url = "mongodb://localhost:27017/mydb"
 mongoose.connect(db_url)
