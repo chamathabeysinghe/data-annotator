@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {Grid, Image, List} from 'semantic-ui-react'
+import {Grid, Button, List, Icon} from 'semantic-ui-react'
 import {Player} from 'video-react'
 import AnnotatorForm from './annotatorform'
+import files from '../../utils/files'
+
 
 class Annotator extends Component {
 
@@ -15,13 +17,35 @@ class Annotator extends Component {
   }
 
   getFiles () {
-    return ['camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4','camila.mp4', 'pimple.mp4',]
+    return files
   }
   getFilesAlreadyAnnotated () {
-    return ['pimple.mp4']
+    var alreadyAnnotated = []
+    var currentList = localStorage.getItem('doneList')
+    if (!currentList) {
+      return alreadyAnnotated
+    }
+    currentList = JSON.parse(currentList)
+    for (var i = 0; i < currentList.length; i++) {
+      console.log(currentList[i])
+      alreadyAnnotated.push(currentList[i].video)
+    }
+    return alreadyAnnotated
   }
   submitAnnotationForVideo (annotations) {
-    console.log(annotations)
+    var currentList = localStorage.getItem('doneList')
+    annotations.video = this.state.currentVideo
+
+    if (currentList) {
+      currentList = JSON.parse(currentList)
+      currentList.push(annotations)
+    } else {
+      currentList = [annotations]
+    }
+    console.log(currentList)
+    localStorage.setItem('doneList', JSON.stringify(currentList))
+
+
   }
 
   submitAllAnnotations () {
@@ -29,7 +53,6 @@ class Annotator extends Component {
   }
 
   changeCurrentVideo (fileName) {
-    console.log(fileName)
     this.setState({
       currentVideo: fileName
     })
@@ -46,11 +69,10 @@ class Annotator extends Component {
     return (
       <div>
         <Grid>
-          <Grid.Row columns={2}>
+          <Grid.Row columns={3}>
             <Grid.Column width={8}>
               <Player
                 playsInline
-                poster="/images/narnia.jpg"
                 src={'/videos/'+this.state.currentVideo}
               />
             </Grid.Column>
@@ -59,8 +81,9 @@ class Annotator extends Component {
               <List selection verticalAlign='middle'>
                 {this.state.filesToAnnotate.map(fileName => {
                   return (
-                    <List.Item onClick={this.changeCurrentVideo.bind(this, fileName)}>
-                      <Image avatar src={this.state.filesAlreadyAnnotated.indexOf(fileName)===-1?'images/question.png':'/images/right.png'} />
+                    <List.Item onClick={this.changeCurrentVideo.bind(this, fileName)} style={this.state.currentVideo === fileName?{background: 'rgb(232, 233, 232)'}:{}}>
+                      {/*<Image avatar src={this.state.filesAlreadyAnnotated.indexOf(fileName)===-1?'images/question.png':'/images/right.png'} />*/}
+                      <Icon name={this.state.filesAlreadyAnnotated.indexOf(fileName)===-1?'pencil alternate':'hand point right'} color={this.state.filesAlreadyAnnotated.indexOf(fileName)===-1?'red':'green'} size='big' />
                       <List.Content>
                         <List.Header>{fileName}</List.Header>
                       </List.Content>
@@ -69,6 +92,9 @@ class Annotator extends Component {
                 })}
               </List>
               </div>
+            </Grid.Column>
+            <Grid.Column width={2} centered>
+              <Button style={{width:'100%'}} positive >Download CSV</Button>
             </Grid.Column>
           </Grid.Row>
 
