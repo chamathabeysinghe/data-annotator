@@ -3,7 +3,6 @@ import {Grid, Button, List, Icon} from 'semantic-ui-react'
 import {Player} from 'video-react'
 import axios from 'axios'
 import AnnotatorForm from './annotatorform'
-import files from '../../utils/files'
 
 
 class Annotator extends Component {
