@@ -23,17 +23,19 @@ class Annotator extends Component {
     this.setState({
       loading: true
     })
-
+    var self = this
     axios.post('http://localhost:1234/api/annotation', form)
       .then(function(response){
         console.log(response)
-        this.setState({
+        self.setState({
           loading: false
         })
+        window.location.reload(true);
+
       })
       .catch(function (err) {
         console.log(err)
-        this.setState({
+        self.setState({
           loading: false
         })
       })
