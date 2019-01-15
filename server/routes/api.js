@@ -46,7 +46,7 @@ router.post('/video', function (req, res, next) {
 
 router.post('/video-bulk', function (req, res, next) {
   var videos = req.body.videos
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < videos.length; i++) {
     var video_url = videos[i]
     var video = new Video({video_url: video_url})
     video.save(function (err) {
