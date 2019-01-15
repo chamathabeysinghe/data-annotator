@@ -24,7 +24,7 @@ class Annotator extends Component {
       loading: true
     })
     var self = this
-    axios.post('http://localhost:1234/api/annotation', form)
+    axios.post('http://54.187.9.216:1234/api/annotation', form)
       .then(function(response){
         console.log(response)
         self.setState({
@@ -46,7 +46,7 @@ class Annotator extends Component {
     this.setState({
       loading: true
     })
-    axios.get('http://localhost:1234/api/video')
+    axios.get('http://54.187.9.216:1234/api/video')
       .then(function (response) {
         console.log(response.data.result)
         var video = response.data.result
