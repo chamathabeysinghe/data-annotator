@@ -66,11 +66,11 @@ class AnnotatorForm extends Component {
             <Grid.Column>
               <h1>Tags</h1>
               <Form.Field inline>
-                <label>Object frequency</label>
+                <label><abbr title="Number of objects in video(<2 ~ Low | 2-5 ~ Medium| 5< ~ high)">Object frequency</abbr></label>
                 <Radio
                   label='High'
                   name='object_frequency'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='High'
                   checked={this.state.object_frequency === 'High'}
                   onChange={this.handleChange.bind(this,'object_frequency', 'High')}
@@ -78,7 +78,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Medium'
                   name='object_frequency'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Medium'
                   checked={this.state.object_frequency === 'Medium'}
                   onChange={this.handleChange.bind(this,'object_frequency', 'Medium')}
@@ -86,7 +86,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Low'
                   name='object_frequency'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Low'
                   checked={this.state.object_frequency === 'Low'}
                   onChange={this.handleChange.bind(this,'object_frequency', 'Low')}
@@ -98,7 +98,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='High'
                   name='object_surface_complexity'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='High'
                   checked={this.state.object_surface_complexity === 'High'}
                   onChange={this.handleChange.bind(this,'object_surface_complexity', 'High')}
@@ -106,7 +106,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Medium'
                   name='object_surface_complexity'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Medium'
                   checked={this.state.object_surface_complexity === 'Medium'}
                   onChange={this.handleChange.bind(this,'object_surface_complexity', 'Medium')}
@@ -114,7 +114,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Low'
                   name='object_surface_complexity'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Low'
                   checked={this.state.object_surface_complexity === 'Low'}
                   onChange={this.handleChange.bind(this,'object_surface_complexity', 'Low')}
@@ -122,11 +122,11 @@ class AnnotatorForm extends Component {
               </Form.Field>
 
               <Form.Field inline>
-                <label>action_frequency</label>
+                <label><abbr title="Number of actions in video(<2 ~ Low | 2-5 ~ Medium| 5< ~ high)">Action frequency</abbr></label>
                 <Radio
                   label='High'
                   name='action_frequency'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='High'
                   checked={this.state.action_frequency === 'High'}
                   onChange={this.handleChange.bind(this,'action_frequency', 'High')}
@@ -134,7 +134,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Medium'
                   name='action_frequency'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Medium'
                   checked={this.state.action_frequency === 'Medium'}
                   onChange={this.handleChange.bind(this,'action_frequency', 'Medium')}
@@ -142,7 +142,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Low'
                   name='action_frequency'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Low'
                   checked={this.state.action_frequency === 'Low'}
                   onChange={this.handleChange.bind(this,'action_frequency', 'Low')}
@@ -154,7 +154,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='High'
                   name='action_speed'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='High'
                   checked={this.state.action_speed === 'High'}
                   onChange={this.handleChange.bind(this,'action_speed', 'High')}
@@ -162,7 +162,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Medium'
                   name='action_speed'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Medium'
                   checked={this.state.action_speed === 'Medium'}
                   onChange={this.handleChange.bind(this,'action_speed', 'Medium')}
@@ -170,7 +170,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Low'
                   name='action_speed'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Low'
                   checked={this.state.action_speed === 'Low'}
                   onChange={this.handleChange.bind(this,'action_speed', 'Low')}
@@ -182,7 +182,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='High'
                   name='shadows'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='High'
                   checked={this.state.shadows === 'High'}
                   onChange={this.handleChange.bind(this,'shadows', 'High')}
@@ -190,7 +190,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Medium'
                   name='shadows'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Medium'
                   checked={this.state.shadows === 'Medium'}
                   onChange={this.handleChange.bind(this,'shadows', 'Medium')}
@@ -198,7 +198,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Low'
                   name='shadows'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Low'
                   checked={this.state.shadows === 'Low'}
                   onChange={this.handleChange.bind(this,'shadows', 'Low')}
@@ -210,7 +210,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='Yes'
                   name='scene_changes'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Yes'
                   checked={this.state.scene_changes === 'Yes'}
                   onChange={this.handleChange.bind(this,'scene_changes', 'Yes')}
@@ -218,7 +218,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='No'
                   name='scene_changes'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='No'
                   checked={this.state.scene_changes === 'No'}
                   onChange={this.handleChange.bind(this,'scene_changes', 'No')}
@@ -226,11 +226,11 @@ class AnnotatorForm extends Component {
               </Form.Field>
 
               <Form.Field inline>
-                <label>Object entrance</label>
+                <label><abbr title="New objects enter into the scene">Object entrance</abbr></label>
                 <Radio
                   label='Yes'
                   name='object_entrance'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='Yes'
                   checked={this.state.object_entrance === 'Yes'}
                   onChange={this.handleChange.bind(this,'object_entrance', 'Yes')}
@@ -238,7 +238,7 @@ class AnnotatorForm extends Component {
                 <Radio
                   label='No'
                   name='object_entrance'
-                  style={{marginLeft: '5px',marginRight:'5px', float: 'right'}}
+                  style={{marginLeft: '5px',marginRight:'5px'}}
                   value='No'
                   checked={this.state.object_entrance === 'No'}
                   onChange={this.handleChange.bind(this,'object_entrance', 'No')}
