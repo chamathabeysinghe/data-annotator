@@ -5,13 +5,13 @@ class AnnotatorForm extends Component {
   constructor (props) {
     super (props)
     this.state = {
-      object_frequency: 'Low',
-      object_surface_complexity: 'Low',
-      action_frequency: 'Low',
-      action_speed: 'Low',
-      shadows: 'Low',
-      scene_changes: 'No',
-      object_entrance: 'No',
+      object_frequency: undefined,
+      object_surface_complexity: undefined,
+      action_frequency: undefined,
+      action_speed: undefined,
+      shadows: undefined,
+      scene_changes: undefined,
+      object_entrance: undefined,
       categories: []
     }
   }
@@ -46,6 +46,16 @@ class AnnotatorForm extends Component {
   }
 
   onSubmitClick () {
+    if (this.state.object_frequency === undefined ||
+        this.state.object_surface_complexity === undefined ||
+        this.state.action_frequency === undefined ||
+        this.state.action_speed === undefined ||
+        this.state.shadows === undefined ||
+        this.state.scene_changes === undefined ||
+        this.state.object_entrance === undefined) {
+      alert('Some fields are missing')
+      return
+    }
     this.props.submitAnnotationForVideo(this.state)
   }
   render() {
