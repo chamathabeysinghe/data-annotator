@@ -65,6 +65,7 @@ class AnnotatorForm extends Component {
           <Grid.Row columns={1}>
             <Grid.Column>
               <h1>Tags</h1>
+              <p>Select values for below tags. You could assign approximate values based on your perceeption. </p>
               <Form.Field inline>
                 <label><abbr title="Number of objects in video(<2 ~ Low | 2-5 ~ Medium| 5< ~ high)">Object frequency</abbr></label>
                 <Radio
@@ -94,7 +95,7 @@ class AnnotatorForm extends Component {
               </Form.Field>
 
               <Form.Field inline>
-                <label>Object surface complexity</label>
+                <label><abbr title="Level of complexity of the video frames, frame with lot of details has high coplexity ex: crowded area. Frames with less details has low complexity ex: grass field">Object surface complexity</abbr></label>
                 <Radio
                   label='High'
                   name='object_surface_complexity'
@@ -150,7 +151,7 @@ class AnnotatorForm extends Component {
               </Form.Field>
 
               <Form.Field inline>
-                <label>action_speed</label>
+                <label><abbr title="Speed of the actions. ex: Racing car would have high action speed, while walking may be medium or slow speed.">Action speed</abbr></label>
                 <Radio
                   label='High'
                   name='action_speed'
